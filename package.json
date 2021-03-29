@@ -22,20 +22,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "airbnb"
-    ],
-    "env": {
-      "browser": true
-    },
-    "rules": {
-      "react/react-in-jsx-scope": 0,
-      "react/prop-types": 0,
-      "react/button-has-type": 0,
-      "react/jsx-props-no-spreading": 0
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
