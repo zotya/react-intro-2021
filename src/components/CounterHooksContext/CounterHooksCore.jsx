@@ -1,7 +1,38 @@
-import { createContext, useContext, useDebugValue } from 'react';
-import { useCounter as useCounterProvider, useDoubleValue } from '../CounterHooks';
+import {
+  createContext, useCallback, useContext, useDebugValue, useReducer,
+} from 'react';
+import { useDoubleValue } from '../CounterHooks';
 
 export const CounterContext = createContext();
+
+export const useCounterProvider = (defaultValue = 0) => {
+  const [counter, dispatch] = useReducer(
+    (state, { type, payload }) => {
+      switch (type) {
+        case 'increment': return state + payload;
+        case 'decrement': return state - payload;
+        case 'reset': return defaultValue;
+        default: throw Error('This is not the action you\'re looking for');
+      }
+    },
+    defaultValue,
+  );
+  const change = useCallback(
+    ({ target: { dataset: { action, amount } } }) => {
+      dispatch(
+        { type: action, payload: parseInt(amount, 10) },
+      );
+    },
+    [dispatch],
+  );
+  const doubleCounter = useDoubleValue(counter);
+  useDebugValue(counter);
+  return {
+    counter,
+    doubleCounter,
+    change,
+  };
+};
 
 export const CounterProvider = ({ children }) => {
   const state = useCounterProvider();
@@ -23,10 +54,7 @@ export const useDoubleCounter = () => {
   return value;
 };
 
-export const useHandlers = () => {
-  const { reset, change } = useContext(CounterContext);
-  return { reset, change };
-};
+export const useHandlers = () => useContext(CounterContext).change;
 
 export const withCounter = (ComposedComponent) => {
   const WithCounter = (props) => {

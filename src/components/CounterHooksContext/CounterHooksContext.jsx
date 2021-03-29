@@ -25,14 +25,14 @@ const CounterDisplay = () => {
 const CounterDisplayDecorated = withCounter(CounterDisplayRender);
 
 const CounterButtons = () => {
-  const { reset, change } = useHandlers();
+  const change = useHandlers();
   return (
     <>
-      <Button raised data-amount={-5} onClick={change}>-5</Button>
-      <Button raised data-amount={-1} onClick={change}>-1</Button>
-      <Button onClick={reset}>Reset</Button>
-      <Button raised data-amount={1} onClick={change}>+1</Button>
-      <Button raised data-amount={5} onClick={change}>+5</Button>
+      <Button raised data-action="decrement" data-amount={5} onClick={change}>-5</Button>
+      <Button raised data-action="decrement" data-amount={1} onClick={change}>-1</Button>
+      <Button raised data-action="reset" onClick={change}>Reset</Button>
+      <Button raised data-action="increment" data-amount={1} onClick={change}>+1</Button>
+      <Button raised data-action="increment" data-amount={5} onClick={change}>+5</Button>
     </>
   );
 };
