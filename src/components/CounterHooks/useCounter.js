@@ -20,7 +20,7 @@ const useDisplayCounter = (counter) => {
   );
 };
 
-const useDoubleValue = (value) => {
+export const useDoubleValue = (value) => {
   const double = useMemo(
     () => value * 2,
     [value],
