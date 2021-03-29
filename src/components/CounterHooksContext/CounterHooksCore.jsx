@@ -27,3 +27,13 @@ export const useHandlers = () => {
   const { reset, change } = useContext(CounterContext);
   return { reset, change };
 };
+
+export const withCounter = (ComposedComponent) => {
+  const WithCounter = (props) => {
+    const counter = useCounter();
+    const doubleCounter = useDoubleCounter();
+    return <ComposedComponent {...props} {...{ counter, doubleCounter }} />;
+  };
+  WithCounter.displayName = `WithCounter(${ComposedComponent.displayName || ComposedComponent.name})`;
+  return WithCounter;
+};

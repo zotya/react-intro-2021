@@ -5,19 +5,24 @@ import {
   useDoubleCounter,
   useHandlers,
   CounterContext,
+  withCounter,
 } from './CounterHooksCore';
+
+const CounterDisplayRender = ({ counter, doubleCounter }) => (
+  <h1>
+    Counter:
+    {counter}
+    {`(*2 = ${doubleCounter})`}
+  </h1>
+);
 
 const CounterDisplay = () => {
   const counter = useCounter();
   const doubleCounter = useDoubleCounter();
-  return (
-    <h1>
-      Counter:
-      {counter}
-      {`(*2 = ${doubleCounter})`}
-    </h1>
-  );
+  return <CounterDisplayRender {...{ counter, doubleCounter }} />;
 };
+
+const CounterDisplayDecorated = withCounter(CounterDisplayRender);
 
 const CounterButtons = () => {
   const { reset, change } = useHandlers();
@@ -35,16 +40,11 @@ const CounterButtons = () => {
 export const Counter = () => (
   <CounterProvider>
     <CounterDisplay />
+    <CounterDisplayDecorated />
     <CounterButtons />
     <CounterContext.Consumer>
       {({ counter, doubleCounter }) => (
-        <h1>
-          Counter (re-run):
-          {counter}
-          (*2 =
-          {doubleCounter}
-          )
-        </h1>
+        <CounterDisplayRender {...{ counter, doubleCounter }} />
       )}
     </CounterContext.Consumer>
   </CounterProvider>
