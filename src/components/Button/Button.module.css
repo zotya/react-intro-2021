@@ -1,11 +1,10 @@
 /* Base Button Styles */
 
 .button, .background, .outline {
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }
 
 .button {
-  margin: 8px;
   padding: 6px 8px;
   font-size: 12px;
   color: var(--color-text);

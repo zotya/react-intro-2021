@@ -1,7 +1,7 @@
 import LightThemeIcon from 'mdi-react/Brightness6Icon';
 import DarkThemeIcon from 'mdi-react/Brightness4Icon';
 import { useTheme } from '../contexts/theme';
-import { Button } from './Button/Button';
+import { Button } from './Button';
 
 export const ThemeToggleButton = () => {
   const { isLight, toggleTheme } = useTheme();

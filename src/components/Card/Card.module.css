@@ -1,0 +1,12 @@
+.card {
+    box-shadow: var(--shadow-1);
+    margin: 15px;
+    flex: 1;
+    max-width: 350px;
+    background: var(--color-paper);
+    display: flex;
+    flex-flow: column nowrap;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    --padding: 15px;
+}

@@ -1,0 +1,17 @@
+.cardHeader {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: var(--padding);
+}
+
+.title, .subtitle {
+    margin: 5px 5px 0;
+    font-weight: normal;
+    color: var(--color-text);
+    font-size: 1em;
+}
+
+.subtitle {
+    opacity: 0.5;
+    margin-bottom: 5px;
+}

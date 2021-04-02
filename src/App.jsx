@@ -1,5 +1,7 @@
-import AlertIcon from 'mdi-react/AlertIcon';
-import { Button } from './components/Button/Button';
+import { Button } from './components/Button';
+import {
+  Card, CardActions, CardContent, CardHeader, CardMedia,
+} from './components/Card';
 import { ThemeToggleButton } from './components/ThemeToggleButton';
 import { ThemeProvider } from './contexts/theme';
 
@@ -7,28 +9,21 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <Button>Default</Button>
-        <Button color="primary">Primary</Button>
-        <Button color="secondary">Secondary</Button>
-        <Button variant="default" color="invalid">Invalid Color (should be like default)</Button>
-        <Button disabled>Disabled</Button>
-        <hr />
-        <Button variant="raised">Default</Button>
-        <Button variant="raised" color="primary">Primary</Button>
-        <Button variant="raised" color="secondary">Secondary</Button>
-        <Button variant="raised" disabled>Disabled</Button>
-        <hr />
-        <Button variant="outlined">Default</Button>
-        <Button variant="outlined" color="primary">Primary</Button>
-        <Button variant="outlined" color="secondary">Secondary</Button>
-        <Button variant="outlined" disabled>Disabled</Button>
-        <hr />
-        <Button variant="outlined"><AlertIcon /></Button>
-        <Button variant="outlined" color="primary"><AlertIcon /></Button>
-        <Button variant="outlined" color="secondary"><AlertIcon /></Button>
-        <Button variant="outlined" disabled><AlertIcon /></Button>
-        <hr />
         <ThemeToggleButton />
+        <Card>
+          <CardHeader title="My Title" subtitle="Some Subtitle" />
+          <CardMedia src="http://placekitten.com/400/300" />
+          <CardContent>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil mollitia
+            optio tempora voluptas explicabo eos, minus accusamus ipsa dolorem vero
+            tempore! Provident corporis laboriosam laborum blanditiis animi,
+            praesentium quas expedita?
+          </CardContent>
+          <CardActions>
+            <Button>First</Button>
+            <Button>Second</Button>
+          </CardActions>
+        </Card>
       </div>
     </ThemeProvider>
   );

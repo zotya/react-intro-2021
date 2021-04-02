@@ -1,0 +1,6 @@
+.cardContent {
+    opacity: 0.5;
+    color: var(--color-text);
+    padding: var(--padding);
+    line-height: 1.3em;
+}
