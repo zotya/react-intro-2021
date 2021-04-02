@@ -1,0 +1,19 @@
+body {
+  --transition-delay: .5s;
+  --transition-function: ease-out;
+  --transition: var(--transition-delay) var(--transition-function);
+}
+
+body, body.light {
+  --color-primary: #1976d2;
+  --color-secondary: #d32f2f;
+  --color-background: #fafafa;
+  --color-text: #000;
+  --color-paper: #fff;
+}
+
+body.dark {
+  --color-background: #303030;
+  --color-paper: #424242;
+  --color-text: #fff;
+}
