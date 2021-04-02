@@ -3,11 +3,12 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 
 const themeList = ['light', 'dark'];
-export const themes = themeList.reduce(
+const themes = themeList.reduce(
   (prev, current) => ({
     ...prev,
     [current]: current,
@@ -15,10 +16,12 @@ export const themes = themeList.reduce(
   {},
 );
 
-export const ThemeContext = createContext({
+const ThemeContext = createContext({
   theme: themes.light,
   setTheme: () => { throw new Error('Not implemented!'); },
   toggleTheme: () => { throw new Error('Not implemented!'); },
+  isLight: true,
+  isDark: false,
 });
 
 export const useThemeProvider = (defaultTheme = themes.light) => {
@@ -72,7 +75,21 @@ export const useThemeProvider = (defaultTheme = themes.light) => {
     },
     [setTheme],
   );
-  return { theme, toggleTheme, setTheme: updateTheme };
+  const isLight = useMemo(
+    () => theme === themes.light,
+    [theme],
+  );
+  const isDark = useMemo(
+    () => theme === themes.dark,
+    [theme],
+  );
+  return {
+    theme,
+    toggleTheme,
+    isLight,
+    isDark,
+    setTheme: updateTheme,
+  };
 };
 
 export const ThemeProvider = ({ children }) => {
