@@ -9,4 +9,5 @@
     border-radius: var(--border-radius);
     overflow: hidden;
     --padding: 15px;
+    transition: background var(--transition);
 }
