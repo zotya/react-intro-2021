@@ -7,7 +7,7 @@ import {
 } from 'react';
 
 const themeList = ['light', 'dark'];
-const themes = themeList.reduce(
+export const themes = themeList.reduce(
   (prev, current) => ({
     ...prev,
     [current]: current,

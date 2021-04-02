@@ -1,5 +1,7 @@
+import AlertIcon from 'mdi-react/AlertIcon';
 import { Button } from './components/Button/Button';
-import { ThemeProvider, ThemeContext } from './contexts/theme';
+import { ThemeToggleButton } from './components/ThemeToggleButton';
+import { ThemeProvider } from './contexts/theme';
 
 function App() {
   return (
@@ -21,11 +23,12 @@ function App() {
         <Button variant="outlined" color="secondary">Secondary</Button>
         <Button variant="outlined" disabled>Disabled</Button>
         <hr />
-        <ThemeContext.Consumer>
-          {({ theme, toggleTheme }) => (
-            <Button onClick={toggleTheme}>{theme}</Button>
-          )}
-        </ThemeContext.Consumer>
+        <Button variant="outlined"><AlertIcon /></Button>
+        <Button variant="outlined" color="primary"><AlertIcon /></Button>
+        <Button variant="outlined" color="secondary"><AlertIcon /></Button>
+        <Button variant="outlined" disabled><AlertIcon /></Button>
+        <hr />
+        <ThemeToggleButton />
       </div>
     </ThemeProvider>
   );
