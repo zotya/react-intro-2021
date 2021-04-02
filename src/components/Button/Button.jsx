@@ -1,12 +1,13 @@
 import styles from './Button.module.css';
 
 const validColors = ['primary', 'secondary', 'default'];
+const validVariants = ['raised', 'outlined', 'default'];
 
 export const Button = ({
   children,
   className,
-  color,
-  raised,
+  color = 'default',
+  variant = 'default',
   disabled,
   ...rest
 }) => (
@@ -15,13 +16,15 @@ export const Button = ({
     className={[
       className,
       styles.button,
-      raised && styles.raised,
+      validVariants.includes(variant) && styles[variant],
       validColors.includes(color) && styles[color],
     ].filter(Boolean).join(' ')}
     disabled={disabled}
   >
-    {!raised && !disabled && <div className={styles.background} />}
+    {variant !== 'raised' && !disabled && <div className={styles.background} />}
+    {variant === 'outlined' && <div className={styles.outline} />}
     {children}
+    {variant === 'raised' && <div className={styles.overlay} />}
   </button>
 );
 

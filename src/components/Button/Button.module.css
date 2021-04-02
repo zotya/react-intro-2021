@@ -1,9 +1,12 @@
+.button, .background, .outline {
+  border-radius: 4px;
+}
+
 .button {
   margin: 8px;
   padding: 6px 8px;
   font-size: 12px;
   color: var(--color-text);
-  border-radius: 4px;
   text-transform: uppercase;
   border: none;
   background: transparent;
@@ -21,10 +24,15 @@
   opacity: 0.5;
 }
 
-.button .background {
-  content: '';
-  background: currentColor;
-  opacity: 0;
+.primary {
+  color: var(--color-primary);
+}
+
+.secondary {
+  color: var(--color-secondary);
+}
+
+.background, .outline, .overlay {
   position: absolute;
   left: 0;
   right: 0;
@@ -33,18 +41,50 @@
   transition: opacity var(--transition);
 }
 
+.button .background {
+  background: currentColor;
+  opacity: 0;
+}
+
 .button:hover .background {
   opacity: 0.2;
 }
 
+.outlined .outline {
+  border: solid 1px currentColor;
+  opacity: 0.5;
+}
+
+.button:hover .outline {
+  opacity: 1;
+}
+
 .raised {
-
+  background: var(--color-gray);
+  color: var(--color-text);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--transition);
 }
 
-.primary {
-  color: var(--color-primary);
+.raised:hover {
+  box-shadow: var(--shadow-2);
 }
 
-.secondary {
-  color: var(--color-secondary);
+.raised.primary {
+  background: var(--color-primary);
+  color: var(--color-text-contrast);
+}
+
+.raised.secondary {
+  background: var(--color-secondary);
+  color: var(--color-text-contrast);
+}
+
+.overlay {
+  background: var(--color-background-contrast);
+  opacity: 0;
+}
+
+.raised:hover .overlay {
+  opacity: 0.4;
 }
