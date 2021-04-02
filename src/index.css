@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--color-background);
+  color: var(--color-text);
   transition: background var(--transition);
 }
 

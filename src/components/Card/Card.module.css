@@ -12,3 +12,7 @@
     --padding: 15px;
     transition: background var(--transition);
 }
+
+.clickable {
+    cursor: pointer;
+}

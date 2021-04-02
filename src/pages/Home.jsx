@@ -1,5 +1,5 @@
 import RefreshIcon from 'mdi-react/RefreshIcon';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Button } from '../components/Button';
 import { Filter, useFilter } from '../components/Filter';
 import { Container } from '../components/Layout';
@@ -9,7 +9,11 @@ import { useFetch } from '../hooks/useFetch';
 import styles from './Home.module.css';
 
 const moviesUrl = 'http://localhost:4000/movies';
-export const HomePage = () => {
+export const HomePage = ({
+  history: {
+    push,
+  },
+}) => {
   const { value: filter, ...filterProps } = useFilter();
   const url = useMemo(
     () => (filter
@@ -30,6 +34,10 @@ export const HomePage = () => {
       : []
     ),
     [movies, isLoaded, movies],
+  );
+  const onClick = useCallback(
+    (id) => () => push(`/movie/${id}`),
+    [push],
   );
   return (
     <>
@@ -54,6 +62,7 @@ export const HomePage = () => {
         movies,
         isLoaded,
         list: moviesIds,
+        onItemClick: onClick,
       }}
       />
     </>

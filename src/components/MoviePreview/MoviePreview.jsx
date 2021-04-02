@@ -19,24 +19,36 @@ export const MoviePreview = ({
     poster,
   } = {},
   update,
-}) => (
-  <Card>
-    <CardHeader
-      title={title}
-      subtitle={`${year} (${genre})`}
-    />
-    <CardMedia src={poster} alt={title} />
-    <CardContent>{plot}</CardContent>
-    {update && (
-    <CardActions>
-      <span />
-      <Button onClick={update}>
-        <RefreshIcon />
-      </Button>
-    </CardActions>
-    )}
-  </Card>
-);
+  onClick,
+}) => {
+  const onUpdate = useMemo(
+    () => (update
+      ? (event) => {
+        event.preventDefault();
+        update();
+      }
+      : undefined),
+    [update],
+  );
+  return (
+    <Card onClick={onClick}>
+      <CardHeader
+        title={title}
+        subtitle={`${year} (${genre})`}
+      />
+      <CardMedia src={poster} alt={title} />
+      <CardContent>{plot}</CardContent>
+      {update && (
+        <CardActions>
+          <span />
+          <Button onClick={onUpdate}>
+            <RefreshIcon />
+          </Button>
+        </CardActions>
+      )}
+    </Card>
+  );
+};
 
 export const Movie = ({
   id,

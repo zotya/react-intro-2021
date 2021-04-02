@@ -8,6 +8,7 @@ export const MoviesList = ({
   error,
   movies,
   isLoaded,
+  onItemClick,
 }) => {
   if (isLoading) {
     return (
@@ -40,6 +41,7 @@ export const MoviesList = ({
           <Movie
             key={id}
             id={id}
+            onClick={onItemClick(id)}
             {...rest}
           />
         ),

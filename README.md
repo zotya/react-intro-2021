@@ -4,7 +4,7 @@
 
 // For dependencies
 $ yarn add <package-name>
-$ npm install <package-name>
+$ npm install --save <package-name>
 
 // For devDependencies
 $ yarn add -D <package-name>
@@ -25,3 +25,5 @@ Taken from: [https://gist.githubusercontent.com/sabinmarcu/f2e2a68ff36528965792e
 - json server: [https://www.npmjs.com/package/json-server](https://www.npmjs.com/package/json-server)
 
 - debounce [https://www.npmjs.com/package/debounce](https://www.npmjs.com/package/debounce)
+
+- react router [https://reactrouter.com/web/guides/quick-start](https://reactrouter.com/web/guides/quick-start) (`react-router` & `react-router-dom`)
