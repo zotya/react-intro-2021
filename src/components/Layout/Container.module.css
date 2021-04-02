@@ -1,0 +1,23 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    padding: 0 25px;
+}
+
+.vertical {
+    flex-flow: column nowrap;
+}
+
+.horizontal {
+    flex-flow: row nowrap;
+}
+
+@media (max-width: 800px) {
+    .container {
+        padding: 0 10px;
+    }
+    .horizontal {
+        flex-flow: column nowrap;
+    }
+}
