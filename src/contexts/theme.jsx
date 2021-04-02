@@ -2,10 +2,12 @@ import {
   createContext,
   useCallback,
   useContext,
+  useDebugValue,
   useEffect,
   useMemo,
   useState,
 } from 'react';
+import { useMatchMedia } from '../hooks/useMatchMedia';
 
 const themeList = ['light', 'dark'];
 const themes = themeList.reduce(
@@ -24,8 +26,13 @@ const ThemeContext = createContext({
   isDark: false,
 });
 
-export const useThemeProvider = (defaultTheme = themes.light) => {
-  const [theme, setTheme] = useState(defaultTheme);
+export const useThemeProvider = () => {
+  const [theme, setTheme] = useState(undefined);
+  const hasSystemDarkMode = useMatchMedia('(prefers-color-scheme: dark)');
+  const finalTheme = useMemo(
+    () => theme || (hasSystemDarkMode ? themes.dark : themes.light),
+    [theme, hasSystemDarkMode],
+  );
   /**
    * Guarded version of [setTheme], to protect against setting invalid themes
    */
@@ -39,11 +46,24 @@ export const useThemeProvider = (defaultTheme = themes.light) => {
     [setTheme],
   );
   /**
+   * Shorthand for toggling theme
+   */
+  const toggleTheme = useCallback(
+    () => {
+      setTheme(
+        finalTheme === themes.light
+          ? themes.dark
+          : themes.light,
+      );
+    },
+    [setTheme, finalTheme],
+  );
+  /**
    * Change body class (theme) on theme change
    */
   useEffect(
     () => {
-      switch (theme) {
+      switch (finalTheme) {
         case themes.light:
           if (document.body.classList.contains(themes.dark)) {
             document.body.classList.remove(themes.dark);
@@ -60,31 +80,19 @@ export const useThemeProvider = (defaultTheme = themes.light) => {
           throw new Error(`Invalid theme! (valid: ${Object.keys(themes)})`);
       }
     },
-    [theme],
-  );
-  /**
-   * Shorthand for toggling theme
-   */
-  const toggleTheme = useCallback(
-    () => {
-      setTheme((oldTheme) => (
-        oldTheme === themes.light
-          ? themes.dark
-          : themes.light
-      ));
-    },
-    [setTheme],
+    [finalTheme],
   );
   const isLight = useMemo(
-    () => theme === themes.light,
-    [theme],
+    () => finalTheme === themes.light,
+    [finalTheme],
   );
   const isDark = useMemo(
-    () => theme === themes.dark,
-    [theme],
+    () => finalTheme === themes.dark,
+    [finalTheme],
   );
+  useDebugValue(isLight ? 'light' : 'dark');
   return {
-    theme,
+    theme: finalTheme,
     toggleTheme,
     isLight,
     isDark,
