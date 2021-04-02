@@ -4,7 +4,6 @@ body {
   --transition: var(--transition-delay) var(--transition-function);
   --shadow-1: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   --shadow-2: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
-  --color-gray: #ccc;
 }
 
 body, body.light {
@@ -13,14 +12,16 @@ body, body.light {
   --color-text: #000;
   --color-text-contrast: #fff;
   --color-background: #fff;
+  --color-background-gray: #ccc; 
   --color-background-contrast: #424242;
   --color-paper: #fafafa;
 }
 
 body.dark {
-  --color-background: #303030;
-  --color-background-contrasts: #fafafa;
-  --color-paper: #424242;
   --color-text: #fff;
   --color-text-contrast: #000;
+  --color-background: #303030;
+  --color-background-gray: #666;
+  --color-background-contrasts: #fafafa;
+  --color-paper: #424242;
 }

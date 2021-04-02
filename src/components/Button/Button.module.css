@@ -68,7 +68,7 @@
 /* Raised Variant */
 
 .raised {
-  background: var(--color-gray);
+  background: var(--color-background-gray);
   color: var(--color-text);
   box-shadow: var(--shadow-1);
   transition: box-shadow var(--transition);
