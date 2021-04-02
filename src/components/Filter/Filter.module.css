@@ -1,0 +1,61 @@
+.wrapper {
+    margin: 5px;
+    border-bottom: solid 1px var(--color-text);
+    position: relative;
+
+    --label-active-height: 20px;
+    --input-height: 30px;
+    --padding: 5px;
+
+    --transition: all 0.3s var(--transition-function);
+
+    height: calc(var(--input-height) + var(--label-active-height));
+    transition: var(--transition);
+}
+
+.input {
+    background: transparent;
+    border: none;
+    height: var(--input-height);
+    margin-top: var(--label-active-height);
+    padding: var(--padding);
+    color: var(--color-text);
+    transition: var(--transition);
+    width: 100%;
+    outline: none;
+}
+
+.input:focus, 
+.input:active,
+.input:focus + .label, 
+.input:active + .label {
+    color: var(--color-primary);
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    opacity: 0.5;
+    color: var(--color-text);
+    font-size: calc(var(--label-active-height) * 0.8);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--padding);
+    transition: var(--transition);
+}
+
+.wrapper.active {
+    border-width: 2px;
+}
+
+.input:focus + .label, 
+.input:active + .label,
+.wrapper.active .label {
+    height: var(--label-active-height);
+    background: transparent;
+    opacity: 1;
+    font-size: calc(var(--label-active-height) * 0.5)
+}

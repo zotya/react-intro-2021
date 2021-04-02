@@ -1,8 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import debounceFactory from 'debounce';
 
 export const useFetch = (
   url,
-  autoload = false,
+  {
+    autoload = false,
+    debounce = undefined,
+  } = {},
 ) => {
   const [data, setData] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,19 +40,34 @@ export const useFetch = (
     [setData, setIsLoading, setIsLoaded, setError, url],
   );
 
+  const debouncedUpdate = useMemo(
+    () => (debounce
+      ? debounceFactory(update, debounce)
+      : update),
+    [update],
+  );
+
   const [hasAutoLoaded, setHasAutoLoaded] = useState(false);
+  useEffect(
+    () => {
+      if (autoload) {
+        setHasAutoLoaded(false);
+      }
+    },
+    [autoload, setHasAutoLoaded, url],
+  );
   useEffect(
     () => {
       if (autoload && !hasAutoLoaded) {
         setHasAutoLoaded(true);
-        update();
+        debouncedUpdate();
       }
     },
-    [hasAutoLoaded, update, setHasAutoLoaded, autoload],
+    [hasAutoLoaded, debouncedUpdate, setHasAutoLoaded, autoload],
   );
 
   return {
-    update,
+    update: debouncedUpdate,
     data,
     isLoading,
     isLoaded,

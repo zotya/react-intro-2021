@@ -23,3 +23,5 @@ Taken from: [https://gist.githubusercontent.com/sabinmarcu/f2e2a68ff36528965792e
 - mdi-react ([materialdesignicons.com](materialdesignicons.com)): [https://www.npmjs.com/package/mdi-react](https://www.npmjs.com/package/mdi-react)
 
 - json server: [https://www.npmjs.com/package/json-server](https://www.npmjs.com/package/json-server)
+
+- debounce [https://www.npmjs.com/package/debounce](https://www.npmjs.com/package/debounce)

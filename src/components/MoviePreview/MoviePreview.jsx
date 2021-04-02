@@ -52,7 +52,7 @@ export const Movie = ({
     isLoading,
     isLoaded,
     update,
-  } = useFetch(url, true);
+  } = useFetch(url, { autoload: true });
   if (isLoading) {
     return (
       <Card>

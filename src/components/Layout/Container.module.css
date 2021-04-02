@@ -7,6 +7,12 @@
     align-items: flex-start;
 }
 
+.container .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .vertical {
     flex-flow: column nowrap;
 }
@@ -17,6 +23,14 @@
 
 .wrap {
     flex-wrap: wrap;
+}
+
+.center {
+    align-items: center;
+}
+
+.split {
+    justify-content: space-between;
 }
 
 @media (max-width: 800px) {

@@ -7,6 +7,8 @@ export const Container = ({
   className,
   direction = 'horizontal',
   wrap = false,
+  split = false,
+  center = false,
   ...rest
 }) => (
   <div
@@ -16,6 +18,8 @@ export const Container = ({
       styles.container,
       validDirections.includes(direction) && styles[direction],
       wrap && styles.wrap,
+      split && styles.split,
+      center && styles.center,
     ].filter(Boolean).join(' ')}
   >
     {children}
