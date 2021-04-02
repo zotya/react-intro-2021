@@ -32,7 +32,6 @@ export const MoviePreview = ({
       <span />
       <Button onClick={update}>
         <RefreshIcon />
-        {' '}
       </Button>
     </CardActions>
     )}
