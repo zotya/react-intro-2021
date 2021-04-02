@@ -27,7 +27,7 @@ const ThemeContext = createContext({
 });
 
 export const useThemeProvider = () => {
-  const [theme, setTheme] = useState(undefined);
+  const [theme, setTheme] = useState();
   const hasSystemDarkMode = useMatchMedia('(prefers-color-scheme: dark)');
   const finalTheme = useMemo(
     () => theme || (hasSystemDarkMode ? themes.dark : themes.light),
