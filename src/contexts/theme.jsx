@@ -6,7 +6,8 @@ import {
   useState,
 } from 'react';
 
-const themes = ['light', 'dark'].reduce(
+const themeList = ['light', 'dark'];
+const themes = themeList.reduce(
   (prev, current) => ({
     ...prev,
     [current]: current,
@@ -16,11 +17,27 @@ const themes = ['light', 'dark'].reduce(
 
 export const ThemeContext = createContext({
   theme: themes.light,
+  setTheme: () => { throw new Error('Not implemented!'); },
   toggleTheme: () => { throw new Error('Not implemented!'); },
 });
 
 export const useThemeProvider = (defaultTheme = themes.light) => {
   const [theme, setTheme] = useState(defaultTheme);
+  /**
+   * Guarded version of [setTheme], to protect against setting invalid themes
+   */
+  const updateTheme = useCallback(
+    (newTheme) => {
+      if (!themeList.includes(newTheme)) {
+        throw new Error(`Invalid theme! (valid: ${themeList.join(', ')})`);
+      }
+      setTheme(newTheme);
+    },
+    [setTheme],
+  );
+  /**
+   * Change body class (theme) on theme change
+   */
   useEffect(
     () => {
       switch (theme) {
@@ -42,6 +59,9 @@ export const useThemeProvider = (defaultTheme = themes.light) => {
     },
     [theme],
   );
+  /**
+   * Shorthand for toggling theme
+   */
   const toggleTheme = useCallback(
     () => {
       setTheme((oldTheme) => (
@@ -52,7 +72,7 @@ export const useThemeProvider = (defaultTheme = themes.light) => {
     },
     [setTheme],
   );
-  return { theme, toggleTheme };
+  return { theme, toggleTheme, setTheme: updateTheme };
 };
 
 export const ThemeProvider = ({ children }) => {
