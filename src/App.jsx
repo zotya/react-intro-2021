@@ -1,5 +1,5 @@
 import { Container } from './components/Layout';
-import { Movie } from './components/MoviePreview';
+import { MoviesList } from './components/MoviesList';
 import { ThemeToggleButton } from './components/ThemeToggleButton';
 import { ThemeProvider } from './contexts/theme';
 
@@ -11,10 +11,7 @@ function App() {
           <div>
             <ThemeToggleButton />
           </div>
-          <Container direction="horizontal">
-            <Movie id={1} />
-            <Movie id={2} />
-          </Container>
+          <MoviesList />
         </Container>
       </div>
     </ThemeProvider>

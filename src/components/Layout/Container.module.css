@@ -3,6 +3,8 @@
     margin: 0 auto;
     display: flex;
     padding: 0 25px;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .vertical {
@@ -11,6 +13,10 @@
 
 .horizontal {
     flex-flow: row nowrap;
+}
+
+.wrap {
+    flex-wrap: wrap;
 }
 
 @media (max-width: 800px) {

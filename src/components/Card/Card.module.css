@@ -2,7 +2,8 @@
     box-shadow: var(--shadow-1);
     margin: 15px;
     flex: 1;
-    max-width: 350px;
+    min-width: 300px;
+    max-width: 450px;
     background: var(--color-paper);
     display: flex;
     flex-flow: column nowrap;

@@ -6,6 +6,7 @@ export const Container = ({
   children,
   className,
   direction = 'horizontal',
+  wrap = false,
   ...rest
 }) => (
   <div
@@ -14,6 +15,7 @@ export const Container = ({
       className,
       styles.container,
       validDirections.includes(direction) && styles[direction],
+      wrap && styles.wrap,
     ].filter(Boolean).join(' ')}
   >
     {children}
