@@ -27,3 +27,26 @@ Taken from: [https://gist.githubusercontent.com/sabinmarcu/f2e2a68ff36528965792e
 - debounce [https://www.npmjs.com/package/debounce](https://www.npmjs.com/package/debounce)
 
 - react router [https://reactrouter.com/web/guides/quick-start](https://reactrouter.com/web/guides/quick-start) (`react-router` & `react-router-dom`)
+
+## Useful libs
+
+- react-measure [https://www.npmjs.com/package/react-measure](https://www.npmjs.com/package/react-measure)
+
+# Homework
+
+App / Navigation bar on the top of the page to contain:
+- left side
+    - link towards home (with react router)
+    - optional link that takes you back one link if not on the homepage
+- right side
+    - theme button
+
+## Bonus points
+
+Style nav/app bar depending on scroll position:
+- top of the page (scrolled all the way up)
+    - background to match page background
+- page is scrolled (visually pleasing, tolerance to be decided)
+    - background to shift
+    - add box shadow
+Bar should be fixed to top
