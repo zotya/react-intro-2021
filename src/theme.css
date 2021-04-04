@@ -18,6 +18,7 @@ body, body.light {
   --color-background-gray: #ccc; 
   --color-background-contrast: #424242;
   --color-paper: #fafafa;
+  --navbar-height: 40px;
 }
 
 body.dark {

@@ -4,21 +4,27 @@ import {
   Route,
 } from 'react-router-dom';
 import { Container } from './components/Layout';
-import { ThemeToggleButton } from './components/ThemeToggleButton';
 import { ThemeProvider } from './contexts/theme';
+import { Navbar } from './components/Navbar';
 
 import { HomePage } from './pages/Home';
 import { MoviePage } from './pages/Movie';
 
+import styles from './App.module.css';
+
 function App() {
   return (
     <ThemeProvider>
+
       <Router>
         <div className="App">
-          <Container direction="vertical">
-            <div>
-              <ThemeToggleButton />
-            </div>
+          <Navbar>
+            Movie DB
+          </Navbar>
+          <Container
+            direction="vertical"
+            className={styles.Container}
+          >
             <Switch>
               <Route exact path="/movie/:id" component={MoviePage} />
               <Route exact path="/" component={HomePage} />

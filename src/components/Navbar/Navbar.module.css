@@ -1,0 +1,13 @@
+.navbar {
+  top:0px;
+  width:100%;
+  z-index: 999;
+  border:1px solid red;
+  background: var(--color-background-gray);
+  height: var(--navbar-height);
+  position:fixed;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
