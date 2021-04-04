@@ -1,0 +1,10 @@
+version: '3'
+services:
+  training:
+    image: node:12.13.0
+    volumes:
+      - .:/training
+    ports:
+      - 3000:3000
+      - 4000:4000
+    command: bash -c "tail -f /dev/null"

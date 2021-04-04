@@ -1,3 +1,4 @@
+
 ## Adding new packages to the repo
 
 ```
@@ -50,3 +51,21 @@ Style nav/app bar depending on scroll position:
     - background to shift
     - add box shadow
 Bar should be fixed to top
+
+## Usage with docker
+start the node environment inside a container:
+```
+docker-compose up -d
+```
+get into the container:
+```
+docker-compose exec training bash
+```
+inside the container the app is located in the training folder
+```
+cd training
+yarn install
+yarn server
+yarn start
+```
+
