@@ -38,8 +38,6 @@ function App() {
                   </Switch>
                 </Container>
               </div>
-              <h2>{`Percentage scrolled: ${percentage.toPrecision(2)}%.`}</h2>
-              <pre>{JSON.stringify(percentage, null, 2)}</pre>
             </div>
           )}
         </ScrollPercentage>
