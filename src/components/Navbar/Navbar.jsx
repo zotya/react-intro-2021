@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import styles from './Navbar.module.css';
 
 import { ThemeToggleButton } from '../ThemeToggleButton';
@@ -16,7 +18,7 @@ export const Navbar = ({
   >
     <div>
       <HomeButton />
-      <BackButton />
+      {useLocation().pathname !== '/' ? <BackButton /> : ''}
     </div>
     <div>
       {children}
