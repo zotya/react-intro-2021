@@ -2,7 +2,6 @@
   top:0px;
   width:100%;
   z-index: 999;
-  border:1px solid red;
   background: var(--color-background-gray);
   height: var(--navbar-height);
   position:fixed;
@@ -10,4 +9,10 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
+  box-shadow: var(--shadow-1);
+}
+
+.scrolledContent {
+  opacity: 0.8;
+  box-shadow: var(--shadow-2);
 }

@@ -5,9 +5,13 @@ import { HomeButton } from '../HomeButton';
 
 export const Navbar = ({
   children,
+  scrollPercentage,
 }) => (
   <div
-    className={styles.navbar}
+    className={[
+      styles.navbar,
+      scrollPercentage > 0.5 ? styles.scrolledContent : ' ',
+    ].filter(Boolean).join(' ')}
   >
     <div>
       <HomeButton />
