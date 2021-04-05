@@ -69,3 +69,5 @@ yarn server
 yarn start
 ```
 
+## Libs for hw:
+- debounce [react-scroll-percentage](https://github.com/thebuilder/react-scroll-percentage)
