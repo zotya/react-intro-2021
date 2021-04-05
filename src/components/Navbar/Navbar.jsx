@@ -2,6 +2,7 @@ import styles from './Navbar.module.css';
 
 import { ThemeToggleButton } from '../ThemeToggleButton';
 import { HomeButton } from '../HomeButton';
+import { BackButton } from '../BackButton';
 
 export const Navbar = ({
   children,
@@ -15,6 +16,7 @@ export const Navbar = ({
   >
     <div>
       <HomeButton />
+      <BackButton />
     </div>
     <div>
       {children}
